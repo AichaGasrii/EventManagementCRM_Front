@@ -1,0 +1,37 @@
+
+<body>
+    <div class=" app app-auth-check-mail align-content-stretch d-flex flex-wrap justify-content-end">
+        <div class="app-auth-background">
+
+        </div>
+        <div class="app-auth-container">
+            <div class="logo">
+                <a href="index.html">EVENTFLOW</a>
+            </div>
+            <p class="auth-description">Check Your Email</p>
+            <form (ngSubmit)="onCheckEmail(emailInput.value)" #emailCheckForm="ngForm">
+            <div class="auth-credentials m-b-xxl">
+                <label for="signInEmail" class="form-label">Email</label>
+                <input class="form-control m-b-md"  type="email" placeholder="Enter your email"#emailInput="ngModel" [(ngModel)]="userEmail" name="userEmail" required>
+                <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="uk-alert-danger">
+                    <div *ngIf="emailInput.errors && emailInput.errors['required']" class="form-text-error">Email is required.</div>
+                    <div *ngIf="emailInput.errors && emailInput.errors['email']" class="form-text-error">Invalid email format.</div>
+                  </div>      
+            </div>
+
+            <div class="auth-submit">
+                <button class="btn btn-primary" type="submit" [disabled]="emailCheckForm.form.invalid">Check Email</button>
+                    
+            </div>
+        </form>
+            <div class="divider"></div>
+            <div class="auth-alts">
+                <a href="#" class="auth-alts-google"></a>
+                <a href="#" class="auth-alts-facebook"></a>
+                <a href="#" class="auth-alts-twitter"></a>
+            </div>
+        </div>
+    </div>
+    
+
+</body>

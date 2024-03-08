@@ -1,0 +1,55 @@
+
+<body>
+    <div class="app app-auth-sign-in align-content-stretch d-flex flex-wrap justify-content-end">
+        <div class="app-auth-background">
+
+        </div>
+        <div class="app-auth-container">
+            <div class="logo">
+                <a href="index.html">EVENTFLOW</a>
+            </div>
+            <p class="auth-description">Please sign-in to your account and continue to the dashboard.<br>Don't have an account? <a href="/register">Sign Up</a></p>
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+               
+            <div class="auth-credentials m-b-xxl">
+                <label for="signInEmail" class="form-label">userEmail</label>
+                <input class="form-control m-b-md" type="text" placeholder="userEmail" [(ngModel)]="userName" name="useremail" required #useremailRef="ngModel">
+                <div *ngIf="useremailRef.invalid && (useremailRef.dirty || useremailRef.touched)" class="uk-alert-danger">
+                  <div *ngIf="useremailRef.errors && useremailRef.errors['required']" class="form-text-error" >useremail is required.</div>
+                </div>
+
+                <label for="signInPassword" class="form-label">Password</label>
+                <input class="form-control" type="password" placeholder="Password" [(ngModel)]="userPassword" name="password" required #passwordRef="ngModel">
+                <div *ngIf="passwordRef.invalid && (passwordRef.dirty || passwordRef.touched)" class="uk-alert-danger">
+                    <div *ngIf="passwordRef.errors && passwordRef.errors['required']" class="form-text-error" >Password is required.</div>
+                </div>
+            
+            </div>
+
+            <div class="auth-submit">
+                <button class="btn btn-primary" type="submit" [disabled]="loginForm.form.invalid">Log In</button>
+                    
+                <a href="/check" class="auth-forgot-password float-end">Forgot password?</a>
+            </div>
+        </form>
+            <div class="divider"></div>
+            <div class="auth-alts">
+                <div id="g_id_onload"
+     data-client_id="784115350991-jkq67fk06nlcf1nii3p9i7h70mhbk3ne.apps.googleusercontent.com"
+     data-context="signin"
+     data-ux_mode="popup"
+     data-login_uri="http://localhost:9091/auth/authenticate"
+     data-auto_select="true"
+     data-itp_support="true">
+</div>
+
+                <a  class="auth-alts-google" class="g_id_signin"
+                data-type="icon" data-text="signin_with" data-size="large"></a>
+                <a href="#" class="auth-alts-facebook" ></a>
+                <a href="#" class="auth-alts-twitter"></a>
+            </div>
+        </div>
+    </div>
+    
+
+</body>

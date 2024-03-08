@@ -1,0 +1,85 @@
+<body>
+  <div class="app app-auth-sign-up align-content-stretch d-flex flex-wrap justify-content-end">
+    <div class="app-auth-background"></div>
+    <div class="app-auth-container">
+      <div class="logo">
+        <a href="index.html">EVENTFLOW</a>
+      </div>
+      <p class="auth-description">Please enter your credentials to create an account.<br>Already have an account? <a href="/login">Sign In</a></p>
+      <form (ngSubmit)="registerUser()" #registerForm="ngForm">
+        <div class="auth-credentials m-b-xxl">
+          <div class="form-group">
+            <label for="signUpUsername" class="form-label">Username</label>
+            <input class="form-control m-b-md" type="text" placeholder="Username" [(ngModel)]="user.userName" name="userName" required #userName="ngModel">
+            <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="uk-alert-danger">
+              <div *ngIf="userName.errors && userName.errors['required']" class="form-text-error">Username is required.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signUpFirstName" class="form-label">First Name</label>
+            <input class="form-control m-b-md" type="text" placeholder="FirstName" [(ngModel)]="user.userFirstName" name="userFirstName" required #userFirstName="ngModel">
+            <div *ngIf="userFirstName.invalid && (userFirstName.dirty || userFirstName.touched)" class="uk-alert-danger">
+              <div *ngIf="userFirstName.errors && userFirstName.errors['required']" class="form-text-error">First Name is required.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signUpLastName" class="form-label">Last Name</label>
+            <input class="form-control m-b-md" type="text" placeholder="LastName" [(ngModel)]="user.userLastName" name="userLastName" required #userLastName="ngModel">
+            <div *ngIf="userLastName.invalid && (userLastName.dirty || userLastName.touched)" class="uk-alert-danger">
+              <div *ngIf="userLastName.errors && userLastName.errors['required']" class="form-text-error">Last Name is required.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signUpEmail" class="form-label">Email address</label>
+            <input class="form-control m-b-md" type="email" placeholder="Email" [(ngModel)]="user.userEmail" name="userEmail" required #userEmail="ngModel">
+            <div *ngIf="userEmail.invalid && (userEmail.dirty || userEmail.touched)" class="uk-alert-danger">
+              <div *ngIf="userEmail.errors && userEmail.errors['required']" class="form-text-error">Email is required.</div>
+              <div *ngIf="userEmail.errors && userEmail.errors['email']" class="form-text-error">Invalid email format.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="signUpPassword" class="form-label">Password</label>
+            <input class="form-control" type="password" placeholder="Password" [(ngModel)]="user.userPassword" name="userPassword" required #userPassword="ngModel">
+            <div *ngIf="userPassword.invalid && (userPassword.dirty || userPassword.touched)" class="uk-alert-danger">
+              <div *ngIf="userPassword.errors && userPassword.errors['required']" class="form-text-error">Password is required.</div>
+            </div>
+            <div id="emailHelp" class="form-text">Password must be minimum 8 characters length*</div>
+          </div>
+        </div>
+        
+        
+          <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" [(ngModel)]="captchaResponse" name="recaptcha" required></ngx-recaptcha2>
+          <div *ngIf="registerForm.form.hasError('required', 'recaptcha')"></div>
+       <p></p>
+
+        <div class="auth-submit">
+            <button class="btn btn-primary" type="submit" [disabled]="registerForm.form.invalid">Register</button>
+          </div>
+        
+
+      </form>
+      <div class="divider"></div>
+      <div class="auth-alts">
+        <div id="g_id_onload"
+     data-client_id="784115350991-jkq67fk06nlcf1nii3p9i7h70mhbk3ne.apps.googleusercontent.com"
+     data-context="signup"
+     data-ux_mode="popup"
+     data-login_uri="http://localhost:9091/auth/registerNewUser"
+     data-auto_select="true"
+     data-itp_support="true">
+</div>
+
+<div class="g_id_signin"
+     data-type="icon"
+     data-shape="square"
+     data-theme="outline"
+     data-text="signin_with"
+     data-size="large">
+</div>
+        <a href="#" class="auth-alts-google"></a>
+        <a href="#" class="auth-alts-facebook"></a>
+        <a href="#" class="auth-alts-twitter"></a>
+      </div>
+    </div>
+  </div>
+</body>
