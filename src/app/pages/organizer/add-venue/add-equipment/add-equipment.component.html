@@ -1,0 +1,30 @@
+<form #equipmentForm="ngForm" (ngSubmit)="addEquipment()">
+  <!-- Equipment Name -->
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="equipmentNameLabel">Equipment Name</span>
+    <input [(ngModel)]="equipment.equipmentName" type="text" name="equipmentName" #eqName="ngModel" required class="form-control" placeholder="Enter Equipment Name" aria-describedby="equipmentNameLabel">
+  </div>
+  <div *ngIf="eqName.invalid && eqName.touched" class="text-danger mb-3">
+    Equipment name cannot be empty
+  </div>
+
+  <!-- Equipment Cost -->
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="equipmentCostLabel">$</span>
+    <input [(ngModel)]="equipment.equipmentCost" type="number" name="equipmentCost" #eqCost="ngModel" required min="100" class="form-control" placeholder="Enter Equipment Cost" aria-describedby="equipmentCostLabel">
+    <span class="input-group-text">.00</span>
+  </div>
+  <div *ngIf="eqCost.invalid && eqCost.touched" class="text-danger mb-3">
+    Equipment cost cannot be less than 100
+  </div>
+
+  <!-- Equipment Image -->
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="equipmentImageLabel">Upload Image</span>
+    <input type="file" (change)="onFileChange($event)" class="form-control" aria-describedby="equipmentImageLabel">
+  </div>
+
+  <div class="text-center mt-3">
+    <button  type="submit" [disabled]="equipmentForm.form.invalid"  class="btn btn-primary"><i class="material-icons">add</i>Add</button>
+  </div>
+</form>

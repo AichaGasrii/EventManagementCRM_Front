@@ -1,0 +1,83 @@
+<div class="row">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card widget widget-stats">
+            <div class="card-body">
+                <a href="/admin/allUsers" class="no-underline">
+                    <div class="widget-stats-container d-flex">
+                        <div class="widget-stats-icon widget-stats-icon-primary">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <div class="widget-stats-content flex-fill">
+                            <span class="widget-stats-title">USERS</span>
+                            <span class="widget-stats-amount">{{useNum}}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4">
+        <div class="card widget widget-stats">
+            <div class="card-body">
+                <a href="/admin/allOrganizers" class="no-underline">
+                    <div class="widget-stats-container d-flex">
+                        <div class="widget-stats-icon widget-stats-icon-warning">
+                            <i class="fa fa-people-group"></i>
+                        </div>
+                        <div class="widget-stats-content flex-fill">
+                            <span class="widget-stats-title">ORGANIZERS</span>
+                            <span class="widget-stats-amount">{{orgNum}}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-4">
+        <div class="card widget widget-stats">
+            <div class="card-body">
+                <a href="/admin/viewVenues" class="no-underline">
+                    <div class="widget-stats-container d-flex">
+                        <div class="widget-stats-icon widget-stats-icon-danger">
+                            <i class="fa fa-building"></i>
+                        </div>
+                        <div class="widget-stats-content flex-fill">
+                            <span class="widget-stats-title">VENUES</span>
+                            <span class="widget-stats-amount">{{venueNum}}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-4">
+        <div class="card widget widget-stats">
+            <div class="card-body">
+                <a href="/admin/viewBookings" class="no-underline">
+                    <div class="widget-stats-container d-flex">
+                        <div class="widget-stats-icon widget-stats-icon-success">
+                            <i class="fa fa-book"></i>
+                        </div>
+                        <div class="widget-stats-content flex-fill">
+                            <span class="widget-stats-title">BOOKINGS</span>
+                            <span class="widget-stats-amount">{{numBooking}}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

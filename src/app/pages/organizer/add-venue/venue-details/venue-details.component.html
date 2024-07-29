@@ -1,0 +1,89 @@
+<body>
+  <div class="card">
+    <div class="card-body">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/organizer" routerLinkActive="router-link-active">Home</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a routerLink="/organizer/manageVenue" routerLinkActive="router-link-active">Manage</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Details</li>
+    </ol>
+  </nav>
+</div>
+<div class="container">
+  <h4 class="text-center">Venue Details</h4>
+ 
+  <form #venueForm="ngForm">
+    <table class="table">
+      <!-- Venue Name -->
+      <tr>
+        <td class="form-label">Venue Name</td>
+        <td class="tc2">
+          <input [(ngModel)]="venue.venueName" name="venueName" type="text" 
+                 #vName="ngModel" required class="form-control form-control-solid-bordered">
+        </td>
+      </tr>
+      <tr *ngIf="vName.invalid && vName.touched">
+        <td></td>
+        <td><small class="text-danger">Venue Name is Required</small></td>
+      </tr>
+
+      <!-- Venue Place -->
+      <tr>
+        <td  class="form-label">Venue Place</td>
+        <td class="tc2">
+          <input [(ngModel)]="venue.venuePlace" name="venuePlace" type="text" 
+                 #vPlace="ngModel" required class="form-control form-control-solid-bordered">
+        </td>
+      </tr>
+      <tr *ngIf="vPlace.invalid && vPlace.touched">
+        <td></td>
+        <td><small class="text-danger">Venue Place is Required</small></td>
+      </tr>
+
+      <!-- Venue Contact -->
+      <tr>
+        <td  class="form-label">Venue Contact</td>
+        <td class="tc2">
+          <input [(ngModel)]="venue.venueContact" name="venueContact" type="tel" 
+                 #vContact="ngModel" pattern="[24579]{1}[0-9]{7}" required class="form-control form-control-solid-bordered">
+        </td>
+      </tr>
+      <tr *ngIf="vContact.errors && vContact.touched">
+        <td></td>
+        <td>
+          <small class="text-danger" *ngIf="vContact.errors.required">Venue Contact is Required</small>
+          <small class="text-danger" *ngIf="vContact.errors.pattern">Contact should have 8 digits starting with 2, 4, 5, 7, or 9.</small>
+        </td>
+      </tr>
+
+      <!-- Venue Image -->
+      <tr>
+        <td  class="form-label">Current Image</td>
+        <td class="tc2">
+          <img [src]="'assets/images/'+getImageFileName(venue.imagePath)" alt="{{ venue.venueName }}" style="width: 100px; height: auto;">
+        </td>
+      </tr>
+      <tr>
+        <td  class="form-label">Upload New Image</td>
+        <td class="tc2">
+          <input type="file" (change)="onFileChange($event)" class="form-control form-control-solid-bordered">
+        </td>
+      </tr>
+    </table>
+  </form>
+  <div class="text-center mt-3 mb-3">
+    <input type="submit" (click)="updateVenue()" [disabled]="venueForm.form.invalid" class="btn btn-outline-dark" value="UPDATE">
+  </div>
+  <div class="mt-3 mb-3 tabs text-center ps-3">
+    <button [routerLink]="'showEvents/' + venue.venueId"  class="btn btn-primary btn-style-light btn-lg me-2">EVENTS</button>
+    <button [routerLink]="'showFoodItems/' + venue.venueId"  class="btn btn-primary btn-style-light btn-lg me-2">FOOD ITEMS</button>
+    <button [routerLink]="'showEquipments/' + venue.venueId"  class="btn btn-primary btn-style-light btn-lg">EQUIPMENTS</button>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+</div>
+</body>

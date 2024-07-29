@@ -1,0 +1,26 @@
+<div class="container ">
+    <table class="table table-striped">
+        <thead >
+          <tr class="text-center">
+            <th>Image</th>
+            <th>Name</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let foodItem of foodItems; let i = index">
+            <td><img [src]="'assets/images/' + getImageFileName(foodItem.imagePath)" alt="{{ foodItem.foodItemName }}" style="width: 100px; height: auto;"></td>
+            <td>{{ foodItem.foodItemName }}</td>
+            <td>{{ foodItem.foodItemCost }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div><router-outlet></router-outlet></div>
+
+</div>
+              
+         
+         
+        
+        
+       

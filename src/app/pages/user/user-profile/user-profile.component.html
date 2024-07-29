@@ -1,0 +1,206 @@
+<body>
+    <div class="card">
+        <div class="card-body">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/user" routerLinkActive="router-link-active">Home</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Profile</li>
+            </ol>
+          </nav>
+        </div>
+      
+        <div class="container">
+          <div class="page-description page-description-tabbed">
+            <h1>Profile Settings</h1>
+            <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="account-tab" data-bs-toggle="tab" data-bs-target="#account" type="button" role="tab" aria-controls="account" aria-selected="true">Account</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab" aria-controls="security" aria-selected="false">Security</button>
+              </li>
+           
+            </ul>
+          </div>
+      
+          <div class="row">
+            <div class="col">
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
+                  <form (ngSubmit)="updateUserWithImage()" #profileForm="ngForm" enctype="multipart/form-data">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="mb-4 d-flex flex-column gap-3 align-items-center justify-content-center">
+                            <!-- Display the uploaded image or a placeholder if none -->
+                            <div class="user-change-photo shadow">
+                              <img [src]="'assets/images/'+getImageFileName(user.image)" alt="User Image"  class="profile-img" >
+                          </div>
+                            <!-- Button to trigger the file input -->
+                            <button type="button" class="btn btn-outline-dark btn-sm radius-30 px-4" (click)="fileInput.click()">
+                           Upload new image
+                            </button>
+                            <!-- Hidden file input to select image -->
+                            <input class="form-control" id="formFile" type="file" name="image" (change)="onFileSelected($event)" style="display: none;" #fileInput>
+                            <div class="alert alert-danger" *ngIf="imageInvalid">
+                                L'image est obligatoire
+                            </div>
+                        </div>
+                        <div></div>
+                          <div class="col-md-6">
+                            <label for="settingsInputEmail" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="settingsInputEmail" name="userEmail" [(ngModel)]="user.userEmail" placeholder="example@neptune.com" readonly>
+                            <div id="settingsEmailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    
+                          </div>
+                          <div class="col-md-6">
+                            <label for="settingsInputUserName" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="settingsInputUserName" name="userName" [(ngModel)]="user.userName" placeholder="username" readonly>
+                          </div>
+                          
+                        </div>
+                        <div class="row m-t-lg">
+                          <div class="col-md-6">
+                            <label for="settingsInputFirstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="settingsInputFirstName" name="userFirstName" [(ngModel)]="user.userFirstName" placeholder="John" required>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="settingsInputLastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="settingsInputLastName" name="userLastName" [(ngModel)]="user.userLastName" placeholder="Doe" required>
+                          </div>
+                        </div>
+                        <div class="row m-t-lg">
+                          <div class="col-md-6">
+                            <label for="settingsPhoneNumber" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="settingsPhoneNumber" name="userNumber" [(ngModel)]="user.userNumber" placeholder="(xxx) xxx-xxxx">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="settingsInputLastName" class="form-label">Website</label>
+                            <input type="text" class="form-control" id="settingsInputLastName" name="userLastName" [(ngModel)]="user.siteWeb" placeholder="Doe" required>
+                          </div>
+                          
+                        </div>
+                        <div class="row m-t-lg">
+                          <div class="col-md-6">
+                            <label for="settingsInputDomains" class="form-label">Domains</label>
+                            <select class="form-control" id="settingsInpuDomains" name="userDomains" [(ngModel)]="user.domaines">
+                              <option value="MariagesEtFiancailles">MariagesEtFiancailles</option>
+                              <option value="DinersDaffaires">DinersDaffaires</option>
+                              <option value="InformatiqueEtTechnologie">InformatiqueEtTechnologie</option>
+                              <option value="FinanceEtInvestissement">FinanceEtInvestissement</option>
+                              <option value="MarketingEtCommunication">MarketingEtCommunication</option>
+                              <option value="sante">sante</option>
+                              <option value="EnergieEtEnvironnement">EnergieEtEnvironnement</option>
+                              <option value="IndustrieEtManufacture">IndustrieEtManufacture</option>
+                              <option value="EducationEtFormation">EducationEtFormation</option>
+                              <option value="LoisirsEtTourisme">LoisirsEtTourisme</option>
+                              <option value="Immobilier">Immobilier</option>
+                              <option value="ServicesJuridiques">ServicesJuridiques</option>
+                              <option value="ArtEtCulture">ArtEtCulture</option>
+                              <option value="Autre">Autre</option>
+                            </select>
+                            </div>
+                          <div class="col-md-6">
+                            <label for="settingsState" class="form-label">Location</label>
+                            <select  class="form-control" id="settingsState" name="location" [(ngModel)]="user.location"  >
+                              <option value="Bizerte">Bizerte</option>
+                              <option value="Béja">Béja</option>
+                              <option value="Jendouba">Jendouba</option>
+                              <option value="Kef">Kef</option>
+                              <option value="Tunis">Tunis</option>
+                              <option value="Ariana">Ariana</option>
+                              <option value="Ben Arous">Ben Arous</option>
+                              <option value="Zaghouan">Zaghouan</option>
+                              <option value="Manouba">Manouba</option>
+                              <option value="Nabeul">Nabeul</option>
+                              <option value="Siliana">Siliana</option>
+                              <option value="Sousse">Sousse</option>
+                              <option value="Kasserine">Kasserine</option>
+                              <option value="Kairouan">Kairouan</option>
+                              <option value="Monastir">Monastir</option>
+                              <option value="Mahdia">Mahdia</option>
+                              <option value="Tozeur">Tozeur</option>
+                              <option value="Sidi Bouzid">Sidi Bouzid</option>
+                              <option value="Sfax">Sfax</option>
+                              <option value="Gafsa">Gafsa</option>
+                              <option value="Tataouine">Tataouine</option>
+                              <option value="Gabès">Gabès</option>
+                              <option value="Kébili">Kébili</option>
+                              <option value="Médenine">Médenine</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row m-t-lg">
+                          <div class="col">
+                            <label for="settingsAbout" class="form-label">About</label>
+                            <textarea class="form-control" id="settingsAbout" name="aboutMe" [(ngModel)]="user.aboutMe" maxlength="500" rows="4"></textarea>
+                          </div>
+                        </div>
+                       
+                        <div class="row m-t-lg">
+                          <div class="col">
+                            <button type="submit" class="btn btn-primary m-t-sm">Update</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+                  <div class="card">
+                      <div class="card-body">
+                          <div class="settings-security-two-factor">
+                              <h5>Two-Factor Authentication</h5>
+                              <span>Two-factor authentication is automatically enabled on your account, for security reasons we require all users to authenticate with SMS code or authorized third-party auth apps. Read more about our security policy <a href="#">here</a>.</span>
+                          </div>
+                          <div class="row m-t-xxl">
+                              <div class="col-md-6">
+                                  <label for="settingsCurrentPassword" class="form-label">Current Password</label>
+                                  <input type="password" class="form-control" aria-describedby="settingsCurrentPassword" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+                                  <div id="settingsCurrentPassword" class="form-text">Never share your password with anyone.</div>
+                              </div>
+                          </div>
+                          <div class="row m-t-xxl">
+                              <div class="col-md-6">
+                                  <label for="settingsNewPassword" class="form-label">New Password</label>
+                                  <input type="password" class="form-control" aria-describedby="settingsNewPassword" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+                              </div>
+                          </div>
+                          <div class="row m-t-xxl">
+                              <div class="col-md-6">
+                                  <label for="settingsConfirmPassword" class="form-label">Confirm Password</label>
+                                  <input type="password" class="form-control" aria-describedby="settingsConfirmPassword" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+                              </div>
+                          </div>
+                          <div class="row m-t-xxl">
+                              <div class="col-md-6">
+                                  <label for="settingsSmsCode" class="form-label">SMS Code</label>
+                                  <div class="input-group">
+                                      <input type="password" class="form-control" aria-describedby="settingsSmsCode" placeholder="&#9679;&#9679;&#9679;&#9679;">
+                                      <button class="btn btn-primary btn-style-light" id="settingsResentSmsCode">Resend</button>
+                                  </div>
+                                  <div id="settingsSmsCode" class="form-text">Code will be sent to the phone number from your account.</div>
+                              </div>
+                          </div>
+                          <div class="row m-t-lg">
+                              <div class="col">
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="settingsPasswordLogout" checked>
+                                      <label class="form-check-label" for="settingsPasswordLogout">
+                                          Log out from all current sessions
+                                      </label>
+                                  </div>
+                                  <a href="#" class="btn btn-primary m-t-sm">Change Password</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+        

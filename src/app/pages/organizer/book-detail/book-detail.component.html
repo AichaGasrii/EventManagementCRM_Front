@@ -1,0 +1,97 @@
+<div class="bread">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/organizer" routerLinkActive="router-link-active">Home</a></li>
+            <li class="breadcrumb-item"><a routerLink="/organizer/viewBookings" routerLinkActive="router-link-active">Bookings</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Details</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card mt-4">
+                <div class="card-header text-center">
+                    <h3>Booking Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Booking ID</p>
+                            <p>{{booking.bookingId}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Booked By</p>
+                            <p>{{booking.firstName}} {{booking.lastName}}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">User Contact</p>
+                            <p>{{booking.phoneNumber}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Event</p>
+                            <p>{{booking.eventName}}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Date</p>
+                            <p>{{booking.date}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Food</p>
+                            <p>{{booking.foodItemName}}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Equipment</p>
+                            <p>{{booking.equipmentName}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Guests</p>
+                            <p>{{booking.guestCount}}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Event Cost</p>
+                            <p>{{booking.eventCost}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Food Cost</p>
+                            <p>{{booking.foodItemCost}}</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Equipment Cost</p>
+                            <p>{{booking.equipmentCost}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="font-weight-bold mb-0">Total Cost</p>
+                            <p>{{booking.totalCost}}</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-auto">
+                            <button routerLink="/organizer/viewBookings" class="btn btn-secondary">BACK</button>
+                        </div>
+                        <div class="col-auto" *ngIf="booking.paymentStatus=='Pending'">
+                            <button [routerLink]="'/user/payment/'+booking.bookingId" class="btn btn-primary">PAY</button>
+                        </div>
+                      <div class="col-auto">
+                        <button (click)="planEvent(booking.bookingId)" class="btn btn-success">PLAN</button>
+                      </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    Booking Date: {{booking.date}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

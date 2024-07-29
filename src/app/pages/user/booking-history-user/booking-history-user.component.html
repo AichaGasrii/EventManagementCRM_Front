@@ -1,0 +1,85 @@
+<div class="bread">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/user" routerLinkActive="router-link-active">Home</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">History</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container page">
+    <h4 class="text-center">BOOKING HISTORY</h4>
+<div class="row">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Venue</th>
+          <th scope="col">Event</th>
+          <th scope="col">Total Cost</th>
+          <th scope="col">Date</th>
+
+          <th scope="col">Payment Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let booking of bookings; let i = index">
+          <th scope="row" class="align-middle">{{ i + 1 }}</th>
+          <td class="align-middle">{{ booking.venueName }}</td>
+          <td class="align-middle">{{ booking.eventName }}</td>
+          <td class="align-middle">{{ booking.totalCost }}</td>
+          <td class="align-middle">
+            <div class="d-flex align-items-center mb-1">
+              <span class="badge bg-warning">{{ booking.date }}</span>
+            </div>
+          </td>
+
+          <td class="align-middle">
+            <div class="d-flex align-items-center mb-1">
+              <span
+                class="badge"
+                [ngClass]="{
+                  'bg-success': booking.paymentStatus === 'Processed',
+                  'bg-danger': booking.paymentStatus === 'Pending'
+                }"
+                >{{ booking.paymentStatus }}</span
+              >
+            </div>
+          </td>
+          <td class="align-middle">
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                [routerLink]="'/user/bookingDetail/' + booking.bookingId"
+              >
+                Details
+              </button>
+              <button
+                *ngIf="todayDate < booking.date"
+                type="button"
+                class="btn btn-outline-danger custom-btn"
+                (click)="cancelBooking(booking.bookingId)"
+              >
+                Cancel
+              </button>
+              <button
+                *ngIf="todayDate > booking.date"
+                type="button"
+                class="btn btn-outline-danger custom-btn"
+                (click)="cancelBooking(booking.bookingId)"
+              >
+                Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>

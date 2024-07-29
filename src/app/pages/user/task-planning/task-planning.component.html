@@ -1,0 +1,49 @@
+<div class="container">
+  <h2>Task Planning for Event {{ eventId }}</h2>
+
+  <div class="row mt-4">
+    <div class="col-lg-3">
+      <h4>Status</h4>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <input type="radio" name="status" value="all" checked (change)="filterTasks('all')"> All
+        </li>
+        <li class="list-group-item">
+          <input type="radio" name="status" value="todo" (change)="filterTasks('todo')"> To Do
+        </li>
+        <li class="list-group-item">
+          <input type="radio" name="status" value="inprogress" (change)="filterTasks('inprogress')"> In Progress
+        </li>
+        <li class="list-group-item">
+          <input type="radio" name="status" value="completed" (change)="filterTasks('completed')"> Completed
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="task-list">
+        <div *ngIf="showNewTaskForm" class="new-task-form">
+          <input type="text" [(ngModel)]="newTask.title" placeholder="Task Title" class="form-control mb-2">
+          <input type="text" [(ngModel)]="newTask.description" placeholder="Task Description" class="form-control mb-2">
+          <button class="btn btn-primary" (click)="createNewTask()">Create New</button>
+        </div>
+
+        <div class="task" *ngFor="let task of filteredTasks">
+          <div class="task-header">
+            <h5>{{ task.title }}</h5>
+            <span class="badge" [ngClass]="{
+              'badge-secondary': task.status === 'todo',
+              'badge-primary': task.status === 'inprogress',
+              'badge-success': task.status === 'completed'
+            }">{{ task.status }}</span>
+          </div>
+          <p>{{ task.description }}</p>
+          <div class="task-actions">
+            <button class="btn btn-sm btn-success" (click)="changeStatus(task, 'completed')" *ngIf="task.status !== 'completed'">Complete</button>
+            <button class="btn btn-sm btn-primary" (click)="changeStatus(task, 'inprogress')" *ngIf="task.status === 'todo'">In Progress</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

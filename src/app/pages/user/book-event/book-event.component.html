@@ -1,0 +1,138 @@
+<div class="bread">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/user" routerLinkActive="router-link-active">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Book Event</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container page">
+  <h4 class="text-center">BOOK AN EVENT</h4>
+
+  <!-- Select Place -->
+  <div class="input-group mb-3">
+    <span class="input-group-text">Place</span>
+    <select class="form-select" (change)="onSelectPlace($event)">
+      <option selected disabled>Select Place</option>
+      <option *ngFor="let place of places">{{ place }}</option>
+    </select>
+  </div>
+
+  <!-- Select Venue -->
+  <div class="input-group mb-3">
+    <span class="input-group-text">Venue</span>
+    <select #venueId="ngModel" [(ngModel)]="booking.venueId" name="venueId" class="form-select" (change)="onSelectVenue($event)">
+      <option disabled>Select Venue</option>
+      <option *ngFor="let venue of venues" [value]="venue.venueId">{{ venue.venueName }}</option>
+    </select>
+  </div>
+  <div class="text-danger mb-3" [class.d-none]="!venueHasError || venueId.untouched">Please select a Venue</div>
+
+  <!-- Select Event -->
+  <div class="input-group mb-3">
+    <span class="input-group-text">Event</span>
+    <select #eventId="ngModel" (change)="onSelectedEvent($event)" [(ngModel)]="booking.eventName" name="eventName" class="form-select">
+      <option disabled>Select Event</option>
+      <option *ngFor="let event of events" [value]="event.eventName">{{ event.eventName }}</option>
+    </select>
+  </div>
+  <div class="text-danger mb-3" [class.d-none]="!eventHasError || eventId.untouched">Please select an Event</div>
+
+  <input #date="ngModel" required [(ngModel)]="booking.date" class="form-control" type="date" [min]="minDate" (change)="validateDate($event)">
+
+  <div class="text-danger mb-3" [class.d-none]="booking.date || !booking.date">Date is required</div>
+
+  <!-- Select Guest Count -->
+  <div class="input-group mb-3">
+    <span class="input-group-text">Number of Guests</span>
+    <input #guest="ngModel" [(ngModel)]="booking.guestCount" class="form-control" min="10" type="number">
+  </div>
+  <div class="text-danger mb-3" [class.d-none]="!guest.errors || guest.untouched">Minimum 10 guests are required</div>
+
+  <div *ngIf="events != null" class="container mt-3 page2">
+    <div class="row">
+      <!-- Select Food Items -->
+      <div class="col text-center">
+        <h5>Food Items</h5>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Select</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Cost</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let foodItem of foodItems">
+            <td>
+              <input (change)="onSelectfoodItems($event, foodItem)" class="form-check-input" type="checkbox" [value]="foodItem.foodItemId">
+            </td>
+            <td>
+              <img [src]="'assets/images/' + getImageFileName(foodItem.imagePath)" alt="{{ foodItem.foodItemName }}" style="width: 100px; height: auto;">
+            </td>
+            <td>{{ foodItem.foodItemName }}</td>
+            <td>{{ foodItem.foodItemCost }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Select Equipments -->
+      <div class="col text-center">
+        <h5>Equipments</h5>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Select</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Cost</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let equipment of equipments">
+            <td>
+              <input (change)="onSelectEquipments($event, equipment)" class="form-check-input" type="checkbox" [value]="equipment.equipmentId">
+            </td>
+            <td>
+              <img [src]="'assets/images/' + getImageFileName(equipment.imagePath)" alt="{{ equipment.equipmentName }}" style="width: 100px; height: auto;">
+            </td>
+            <td>{{ equipment.equipmentName }}</td>
+            <td>{{ equipment.equipmentCost }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-3 mb-3 page">
+    <table class="table table-striped">
+      <tbody>
+      <tr>
+        <td>EVENT COST</td>
+        <td class="text-end">{{ eventCost }}</td>
+      </tr>
+      <tr>
+        <td>FOOD COST</td>
+        <td class="text-end">{{ foodCost * booking.guestCount }}</td>
+      </tr>
+      <tr>
+        <td>EQUIPMENT COST</td>
+        <td class="text-end">{{ equipmentCost }}</td>
+      </tr>
+      <tr>
+        <td>TOTAL COST</td>
+        <td class="text-end">{{ eventCost + equipmentCost + foodCost * booking.guestCount }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Button to Book Event -->
+  <div class="d-grid mb-3">
+    <button (click)="bookEvent()" [class.disabled]="guest.errors || eventHasError || !booking.date" class="btn btn-primary">BOOK EVENT</button>
+  </div>
+</div>

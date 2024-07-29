@@ -1,0 +1,14 @@
+.red-message {
+    color: red;
+}
+
+.back-arrow {
+    font-size: 30px; /* Change the size of the arrow */
+    color: #6596fc; /* Change the color of the arrow */
+}
+
+
+.auth-description {
+    font-size: 12px; /* Adjust the font size smaller */
+    line-height: 1.1; /* Adjust the line height smaller */
+  }

@@ -1,0 +1,22 @@
+.breadcrumb {
+  background-color: #e1e2e2;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.profile-img {
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .user-change-photo {
+    width: 150px; /* Adjust the size as needed */
+    height: 150px; /* Adjust the size as needed */
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

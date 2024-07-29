@@ -1,0 +1,64 @@
+<div class="bread">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active">
+        <a routerLink="/user" routerLinkActive="router-link-active"
+          >Home</a
+        >
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Notification</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container page">
+  <div>
+    <h4 class="text-center">Notifications</h4>
+  </div>
+
+  <div class="todo-list container">
+    <ul class="list-unstyled">
+      <li class="todo-item" *ngFor="let noti of notifications">
+        <div class="alert alert-custom" role="alert">
+          <div class="custom-alert-icon icon-primary">
+            <i class="material-icons-outlined">done</i>
+          </div>
+          <div class="alert-content">
+            <span class="alert-title">
+              {{ noti.date }}
+              <span
+                class="badge badge-style-light rounded-pill badge-warning"
+                >{{ noti.time }}</span
+              >
+            </span>
+            <span
+              class="badge badge-style-light rounded-pill"
+              [ngClass]="{
+                'badge-success': noti.checked,
+                'badge-danger': !noti.checked
+              }"
+            >
+              {{ noti.checked ? "Checked" : "Not checked" }}
+            </span>
+            <span class="alert-text">{{ noti.message }}.</span>
+          </div>
+          <div class="todo-item-actions">
+            <a
+              class="todo-item-delete"
+              (click)="deleteNoti(noti.notificationId)"
+            >
+              <i class="material-icons-outlined no-m">close</i>
+            </a>
+            <a
+              *ngIf="!noti.checked"
+              class="todo-item-done"
+              (click)="updateNotificationCheckedStatus(noti)"
+            >
+              <i class="material-icons-outlined no-m">done</i>
+            </a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

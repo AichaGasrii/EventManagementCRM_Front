@@ -1,0 +1,62 @@
+.bread {
+    margin-top: 75px;
+}
+
+.breadcrumb {
+    background-color: #e1e2e2;
+    color: #6c757d;
+}
+
+.line {
+    background-color: black;
+    height: 2px;
+    margin: 10px 0;
+}
+
+.container {
+    padding: 2% 5%;
+    max-width: 600px; /* Adjust for larger forms */
+    margin: auto;
+}
+
+.con1 {
+    background-color: rgb(208, 216, 229);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 10px; /* Rounded corners */
+}
+
+.con2 {
+    background-color:cornflowerblue;
+    color: white;
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners */
+}
+
+.payment-form .form-group {
+    margin-bottom: 15px;
+}
+
+.btn {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.btn2 {
+    background-color: rgb(13, 26, 108);
+    color: white;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.btn:hover {
+    background-color: rgb(194, 12, 179);
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+    .container {
+        padding: 5%;
+    }
+}

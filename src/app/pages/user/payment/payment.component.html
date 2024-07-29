@@ -1,0 +1,66 @@
+<div class="bread">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/user">Home</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/bookingHistory">History</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/user/bookingDetail', bookingId]">Details</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Payment</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container con1">
+  <h4 class="text-center">Booking Cost Summary</h4>
+  <div class="line"></div>
+  
+  <div class="row">
+    <div class="col">Booking ID:</div>
+    <div class="col">{{ booking.bookingId }}</div>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="row">
+    <div class="col">Event Cost:</div>
+    <div class="col">{{ booking.eventCost }} DT</div>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="row">
+    <div class="col">Food Item Cost:</div>
+    <div class="col">{{ booking.foodItemCost }} DT</div>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="row">
+    <div class="col">Equipment Cost:</div>
+    <div class="col">{{ booking.equipmentCost }} DT</div>
+  </div>
+  
+  <div class="line"></div>
+
+  <div class="row">
+    <div class="col font-weight-bold">Total Cost:</div>
+    <div class="col font-weight-bold">{{ booking.totalCost }} DT</div>
+  </div>
+</div>
+
+<form (ngSubmit)="doPayment()" class="payment-form">
+  <div class="container con2 mt-5 mb-4 pb-4">
+    <h4 class="text-center">Payment Details</h4>
+    <div class="form-group">
+      <label for="card-number">Card Number</label>
+      <div id="card-element" class="form-control"></div>
+    </div>
+    
+  
+    
+
+    <div class="text-center">
+      <button class="btn" type="submit">PAY</button>
+      <button routerLink="'/user/bookingDetail/' + bookingId" class="btn btn2">BACK</button>
+    </div>
+  </div>
+</form>

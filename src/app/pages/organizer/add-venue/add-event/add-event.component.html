@@ -1,0 +1,34 @@
+<form #eventForm="ngForm" (ngSubmit)="addEvent()">
+  <!-- Event Name -->
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="eventNameLabel">Event Name</span>
+    <input [(ngModel)]="event.eventName" type="text" name="eventName" #eName="ngModel" required class="form-control" placeholder="Enter Event Name" aria-describedby="eventNameLabel">
+  </div>
+  <div *ngIf="eName.invalid && eName.touched" class="text-danger mb-3">
+    Event name cannot be empty
+  </div>
+
+  <!-- Event Cost -->
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="eventCostLabel">$</span>
+    <input [(ngModel)]="event.eventCost" type="number" name="eventCost" #eCost="ngModel" required min="1000" class="form-control" placeholder="Enter Event Cost" aria-describedby="eventCostLabel">
+    <span class="input-group-text">.00</span>
+  </div>
+  <div *ngIf="eCost.invalid && eCost.touched" class="text-danger mb-3">
+    Event cost cannot be less than 1000
+  </div>
+
+   <!-- Event numberOfGuests -->
+   <div class="input-group mb-3">
+    <span class="input-group-text" id="eventnumberOfGuests">$</span>
+    <input [(ngModel)]="event.numberOfGuests" type="number" name="eventnumberOfGuests" #nbguests="ngModel" required  min="50" class="form-control" placeholder="Enter Event maximum numberOfGuests" aria-describedby="eventnumberOfGuestsLabel">
+    <span class="input-group-text">000</span>
+  </div>
+  <div *ngIf="nbguests.invalid && nbguests.touched" class="text-danger mb-3">
+    Event number of guests cannot be less than 50
+  </div>
+
+  <div class="text-center mt-3">
+    <button  type="submit" [disabled]="eventForm.form.invalid"  class="btn btn-primary"><i class="material-icons">add</i>Add</button>
+  </div>
+</form>

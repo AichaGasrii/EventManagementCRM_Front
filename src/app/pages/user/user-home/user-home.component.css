@@ -1,0 +1,10 @@
+.no-underline {
+    text-decoration: none;
+    color: inherit; /* Optional: This keeps the text color the same as the surrounding content */
+}
+.breadcrumb {
+    background-color: #e1e2e2;
+    color: #6c757d;
+    margin-bottom: 1rem;
+  }
+  

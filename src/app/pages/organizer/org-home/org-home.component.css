@@ -1,0 +1,145 @@
+.bread{
+    margin-top: 75px;
+}
+
+.breadcrumb {
+  background-color: #e1e2e2;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+.no-underline {
+  text-decoration: none;
+  color: inherit; /* Optional: This keeps the text color the same as the surrounding content */
+}
+.widget-stats-icon-green {
+    background-color: green;
+    color: green; /* Optional: to ensure the icon is visible */
+    
+}
+.btn-createDemand {
+    background-color: #FF3A3E;
+    color: #ffffff; /* Couleur du texte en blanc */
+    border: none; /* Supprimer la bordure */
+    padding: 5px 20px; /* Ajouter du rembourrage pour l'apparence du bouton */
+    border-radius: 5px; /* Ajouter des coins arrondis */
+}
+
+.btn-createDemand:hover {
+    background-color: #CC3033; /* Couleur de fond plus claire au survol */
+}
+
+.btn-createDemand:active {
+    background-color: #AA272A; /* Couleur de fond plus foncée lors du clic */
+}
+.page-description {
+    display: flex;
+    align-items: center;
+}
+
+.page-description h1 {
+    margin-right: auto; /* Pousse le titre à gauche autant que possible */
+}
+
+.btn-createDemand {
+    margin-left: auto; /* Pousse le bouton à droite autant que possible */
+}
+
+
+
+/*bouton en attente**/
+
+.badge.bg-custom {
+    background-color: #FF3A3E; /* Change la couleur du badge en rouge */
+    color: white; /* Change la couleur du texte en blanc */
+}
+/*bouton annuler**/
+
+.align-middle {
+    vertical-align: middle; /* Alignement vertical au centre */
+}
+
+.align-badge .d-flex.align-items-center {
+    height: 100%; /* Ajustement de la hauteur */
+}
+.align-badge .badge.bg-custom {
+    background-color: #FF3A3E; /* Couleur de fond rouge */
+    color: white; /* Couleur du texte en blanc */
+}
+
+
+.custom-btn {
+    background-color: #FFFFFF; /* Couleur de fond blanche */
+    color: #FF3A3E; /* Couleur du texte rouge */
+    border-color: #FFFFFF; /* Couleur de la bordure blanche */
+}
+
+.custom-btn:hover,
+.custom-btn:focus {
+    background-color: #FF3A3E; /* Changement de couleur au survol */
+    color: #FFFFFF; /* Changement de couleur du texte au survol */
+    border-color: #FF3A3E; /* Changement de couleur de la bordure au survol */
+}
+
+.custom-btn {
+    background-color: #FFFFFF; /* Couleur de fond blanche */
+    color: #FF3A3E; /* Couleur du texte rouge */
+    border-color: #FF3A3E; /* Couleur de la bordure rouge */
+}
+
+.custom-btn:hover,
+.custom-btn:focus {
+    background-color: #FF3A3E; /* Changement de couleur au survol */
+    color: #FFFFFF; /* Changement de couleur du texte au survol */
+    border-color: #FF3A3E; /* Changement de couleur de la bordure au survol */
+}
+
+.breadcrumb {
+    background-color: #f8f9fa;
+    margin-bottom: 1rem;
+  }
+  
+  .container {
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .input-group-text {
+    width: 150px;
+  }
+  
+  .mb-3 {
+    margin-bottom: 1rem;
+  }
+  
+  .d-grid {
+    display: grid;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  .text-danger {
+    color: #dc3545;
+  }
+  
+  .text-end {
+    text-align: end;
+  }
+  
+  h5 {
+    margin-top: 1rem;
+  }
+  

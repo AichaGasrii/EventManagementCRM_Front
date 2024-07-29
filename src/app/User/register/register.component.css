@@ -1,0 +1,39 @@
+/* CSS for form fields on the same line */
+.form-group-inline {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+.back-arrow {
+  font-size: 30px; /* Change the size of the arrow */
+  color: #6596fc; /* Change the color of the arrow */
+}
+
+  
+  .form-field {
+    flex: 1;
+    margin-right: 10px; /* Adjust spacing between form fields */
+  }
+  
+  /* CSS for form fields */
+  .form-group {
+    margin-bottom: 10px; /* Adjust spacing between form groups */
+  }
+
+ 
+  /* CSS to adjust the size of reCAPTCHA */
+#captchaElem {
+    transform: scale(0.5); /* Adjust the scale factor as needed */
+  }
+
+  .auth-description {
+    font-size: 12px; /* Adjust the font size smaller */
+    line-height: 1.1; /* Adjust the line height smaller */
+  }
+  
+  .red-message {
+    color: red;
+}
+  
+  
+  

@@ -1,0 +1,50 @@
+
+<body>
+    <div class="app app-auth-sign-in align-content-stretch d-flex flex-wrap justify-content-end">
+        <div class="app-auth-background">
+
+        </div>
+        <div class="app-auth-container">
+             <!-- Add this line for the back arrow -->
+             <a href="#" onclick="window.history.back();" class="back-arrow">&#8592;</a>
+            <div class="logo">
+                <a href="index.html">EVENTFLOW</a>
+                <p>  </p>
+                <p>  </p>
+            </div>
+            <p class="auth-description">Please sign-in to your account and continue to the dashboard.<br>Don't have an account? <a href="/register">Sign Up</a></p>
+            <form (ngSubmit)="login()" #loginForm="ngForm">
+               
+            <div class="auth-credentials m-b-xxl">
+                <label for="signInEmail" class="form-label">userEmail</label>
+                <input class="form-control m-b-md" type="text" placeholder="userEmail" [(ngModel)]="userName" name="useremail" required #useremailRef="ngModel">
+                <div *ngIf="useremailRef.invalid && (useremailRef.dirty || useremailRef.touched)" class="uk-alert-danger">
+                  <div *ngIf="useremailRef.errors && useremailRef.errors['required']" class="form-text-error" class="red-message" >UserEmail is required.</div>
+                </div>
+
+                <label for="signInPassword" class="form-label">Password</label>
+                <input class="form-control" type="password" placeholder="Password" [(ngModel)]="userPassword" name="password" required #passwordRef="ngModel">
+                <div *ngIf="passwordRef.invalid && (passwordRef.dirty || passwordRef.touched)" class="uk-alert-danger">
+                    <div *ngIf="passwordRef.errors && passwordRef.errors['required']" class="form-text-error" class="red-message" >Password is required.</div>
+                </div>
+            
+            </div>
+
+            <div class="auth-submit">
+                <button class="btn btn-primary" type="submit" [disabled]="loginForm.form.invalid">Log In</button>
+                    
+                <a href="/check" class="auth-forgot-password float-end">Forgot password?</a>
+            </div>
+        </form>
+            <div class="divider"></div>
+            <div class="auth-alts" *ngIf="!isLogged">
+                <a href="#" class="auth-alts-google" (click)="signInWithGoogle()"></a>
+                <!-- <a href="#" class="auth-alts-facebook" (click)="signInWithFB()"></a> -->
+                <a href="#" class="auth-alts-twitter"></a>
+              </div>
+            
+        </div>
+    </div>
+    
+
+</body>

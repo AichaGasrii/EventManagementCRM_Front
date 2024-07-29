@@ -1,0 +1,82 @@
+<div class="bread">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/organizer" routerLinkActive="router-link-active">Home</a></li>
+            <li class="breadcrumb-item"><a routerLink="/organizer/pastBookings" routerLinkActive="router-link-active">History</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Details</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card mt-4">
+                <div class="card-header text-center">
+                    <h3>Booking Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Booking ID</div>
+                        <div class="col">{{booking.bookingId}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Booked By</div>
+                        <div class="col">{{booking.firstName}} {{booking.lastName}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">User Contact</div>
+                        <div class="col">{{booking.phoneNumber}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Event</div>
+                        <div class="col">{{booking.eventName}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Date</div>
+                        <div class="col">{{booking.date}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Food</div>
+                        <div class="col">{{booking.foodItemName}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Equipment</div>
+                        <div class="col">{{booking.equipmentName}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Guests</div>
+                        <div class="col">{{booking.guestCount}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Event Cost</div>
+                        <div class="col">{{booking.eventCost}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Food Cost</div>
+                        <div class="col">{{booking.foodItemCost}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Equipment Cost</div>
+                        <div class="col">{{booking.equipmentCost}}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col font-weight-bold">Total Cost</div>
+                        <div class="col">{{booking.totalCost}}</div>
+                    </div>
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-auto">
+                            <button routerLink="/organizer/viewBookings" class="btn btn-secondary">BACK</button>
+                        </div>
+                        <div class="col-auto" *ngIf="booking.paymentStatus=='Pending'">
+                            <button [routerLink]="'/user/payment/'+booking.bookingId" class="btn btn-primary">PAY</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    Booking Date: {{booking.date}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

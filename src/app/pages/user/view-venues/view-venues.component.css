@@ -1,0 +1,68 @@
+.breadcrumb {
+  background-color: #e1e2e2;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+
+.breadcrumb-item {
+  color: rgb(62, 59, 59);
+}
+
+.container {
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.input-group-text {
+  width: 150px;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.text-end {
+  text-align: end;
+}
+
+h5 {
+  margin-top: 1rem;
+}
+
+.fa fa-eye {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0; /* Remove padding if needed */
+    width: 40px; /* Adjust width and height as needed */
+    height: 40px;
+  }
+  
+  .btn i {
+    margin: 0; /* Ensure no extra margin on the icon */
+  }

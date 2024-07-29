@@ -1,0 +1,42 @@
+<div class="bread">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/user" routerLinkActive="router-link-active">Home</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Venues</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container page">
+  <h4 class="text-center">VENUES</h4>
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr class="text-center">
+        <th>Image</th>
+        <th>Name</th>
+        <th>Place</th>
+        <th>Contact</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let venue of venues">
+        <td><img [src]="'assets/images/' + getImageFileName(venue.imagePath)" alt="{{ venue.venueName }}" style="width: 100px; height: auto;"></td>
+        <td>{{venue.venueName}}</td>
+        <td>{{venue.venuePlace}}</td>
+        <td>{{venue.venueContact}}</td>
+        <td>
+          <a [routerLink]="'/user/venueDetails/' + venue.venueId" class="btn btn-primary">
+            <i class="fa fa-eye"></i>
+          </a>
+          <a [routerLink]="'/user/availability/' + venue.venueId" class="btn btn-warning">
+            <i class="fa fa-calendar"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

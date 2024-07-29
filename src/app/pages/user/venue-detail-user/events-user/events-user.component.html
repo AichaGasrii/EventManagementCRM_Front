@@ -1,0 +1,26 @@
+<div class="container ">
+    <table class="table table-striped">
+        <thead >
+          <tr class="text-center">
+            <th>Event</th>
+            <th>Cost</th>
+            <th>Nb Max Guests</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let event of events; let i = index">
+            <td>{{ event.eventName }}</td>
+            <td>{{ event.eventCost }}</td>
+            <td> {{event.numberOfGuests}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+  
+    <div><router-outlet></router-outlet></div>
+</div>         
+         
+         
+        
+        
+       

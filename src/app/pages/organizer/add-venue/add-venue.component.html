@@ -1,0 +1,70 @@
+<div class="bread">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/organizer" routerLinkActive="router-link-active">Home</a></li>
+      <li class="breadcrumb-item"><a routerLink="/organizer/manageVenue" routerLinkActive="router-link-active">Manage</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Venue</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container">
+  <h4 class="text-center">Add New Venue</h4>
+  <form class="row g-3" (ngSubmit)="onSubmit(venueForm)" #venueForm="ngForm" enctype="multipart/form-data">
+    
+    <!-- Image Upload Section -->
+    <div class="col-12">
+      <label for="image-uploadify" class="form-label">Venue Image</label>
+      <input id="image-uploadify" type="file" accept="image/png, image/jpeg, image/jpg" 
+             class="form-control" (change)="onFileChange($event)" required>
+      <div *ngIf="!selectedFile && venueForm.submitted" class="text-danger">
+        Image is required.
+      </div>
+    </div>
+
+    <!-- Venue Name -->
+    <div class="col-12">
+      <label for="venueName" class="form-label">Venue Name</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Venue Name" 
+               id="venueName" name="venueName" [(ngModel)]="venue.venueName" #venueName="ngModel" required>
+      </div>
+      <div *ngIf="venueName.invalid && venueName.touched" class="text-danger">
+        Venue Name is required.
+      </div>
+    </div>
+
+    <!-- Venue Place -->
+    <div class="col-12">
+      <label for="venuePlace" class="form-label">Venue Place</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Venue Place" 
+               id="venuePlace" name="venuePlace" [(ngModel)]="venue.venuePlace" #venuePlace="ngModel" required>
+      </div>
+      <div *ngIf="venuePlace.invalid && venuePlace.touched" class="text-danger">
+        Venue Place is required.
+      </div>
+    </div>
+
+    <!-- Venue Contact -->
+    <div class="col-12">
+      <label for="venueContact" class="form-label">Venue Contact</label>
+      <div class="input-group mb-3">
+          <input type="tel" class="form-control" placeholder="Venue Contact" 
+                 id="venueContact" name="venueContact" [(ngModel)]="venue.venueContact" #venueContact="ngModel" pattern="[24579]{1}[0-9]{7}" required>
+      </div>
+      <div *ngIf="venueContact.errors && venueContact.touched" class="text-danger">
+          <small *ngIf="venueContact.errors.required">Venue Contact is required.</small>
+          <small *ngIf="venueContact.errors.pattern">Contact should have 8 digits starting with 2, 4, 5, 7, or 9.</small>
+      </div>
+  </div>
+  
+
+    <!-- Submit Button -->
+    <div class="col-12">
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary" [disabled]="venueForm.invalid">Add Venue</button>
+      </div>
+    </div>
+  </form>
+</div>

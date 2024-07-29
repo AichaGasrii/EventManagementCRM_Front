@@ -1,0 +1,28 @@
+<div class="bread"> <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/user" routerLinkActive="router-link-active" >Home</a></li>
+      <li class="breadcrumb-item"><a routerLink="/user/viewVenues" routerLinkActive="router-link-active" > Venues </a></li>
+      <li class="breadcrumb-item active" aria-current="page">Availability</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="app-content">
+    <div class="content-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <div class="card calendar-container">
+              <div class="card-body">
+                <full-calendar [options]="calendarOptions"></full-calendar>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  

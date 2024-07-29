@@ -1,0 +1,27 @@
+<form #foodItemForm="ngForm" (ngSubmit)="addFoodItem()">
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="foodItemNameLabel">Food Item Name</span>
+    <input [(ngModel)]="foodItem.foodItemName" type="text" name="foodItemName" #fName="ngModel" required class="form-control" placeholder="Enter Food Item Name" aria-describedby="foodItemNameLabel">
+  </div>
+  <div *ngIf="fName.invalid && fName.touched" class="text-danger mb-3">
+    Food Item name cannot be empty
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="foodItemCostLabel">$</span>
+    <input [(ngModel)]="foodItem.foodItemCost" type="number" name="foodItemCost" #fCost="ngModel" required min="10" class="form-control" placeholder="Enter Food Item Cost" aria-describedby="foodItemCostLabel">
+    <span class="input-group-text">.00</span>
+  </div>
+  <div *ngIf="fCost.invalid && fCost.touched" class="text-danger mb-3">
+    Food Item cost cannot be less than 10
+  </div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="foodItemImageLabel">Upload Image</span>
+    <input type="file" (change)="onFileChange($event)" class="form-control" aria-describedby="foodItemImageLabel">
+  </div>
+
+  <div class="text-center mt-3">
+    <button  type="submit" [disabled]="foodItemForm.form.invalid"  class="btn btn-primary"><i class="material-icons">add</i>Add</button>
+  </div>
+</form>

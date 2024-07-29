@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="text-center">
+    <a [routerLink]="'/organizer/venueDetails/' + venueId + '/addFoodItem/' + venueId">
+      <button  type="button" class="btn btn-outline-success mb-2">Add Food</button>
+    </a>
+  </div>
+
+  <table class="table table-striped">
+    <thead >
+      <tr class="text-center">
+        <th>#</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Cost</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let foodItem of foodItems; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td><img [src]="'assets/images/' + getImageFileName(foodItem.imagePath)" alt="{{ foodItem.foodItemName }}" style="width: 100px; height: auto;"></td>
+        <td>{{ foodItem.foodItemName }}</td>
+        <td>{{ foodItem.foodItemCost }}</td>
+        <td>
+          <a [routerLink]="'/organizer/venueDetails/' + venueId + '/updateFoodItem/' + foodItem.foodItemId"  class="btn btn-outline-warning">
+            Update
+          </a>
+          <a (click)="deleteFoodItem(foodItem.foodItemId)" class="btn btn-outline-danger">
+            Delete
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,38 @@
+<form #foodItemForm="ngForm" (ngSubmit)="updateFoodItem()">
+  <!-- Food Item Name -->
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="foodItemNameLabel">Food Item Name</span>
+    <input [(ngModel)]="foodItem.foodItemName" type="text" name="foodItemName" #fName="ngModel" required class="form-control" placeholder="Enter Food Item Name" aria-describedby="foodItemNameLabel">
+  </div>
+  <div *ngIf="fName.invalid && fName.touched" class="text-danger mb-3">
+    Food Item name cannot be empty
+  </div>
+
+  <!-- Food Item Cost -->
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="foodItemCostLabel">$</span>
+    <input [(ngModel)]="foodItem.foodItemCost" type="number" name="foodItemCost" #fCost="ngModel" required min="10" class="form-control" placeholder="Enter Food Item Cost" aria-describedby="foodItemCostLabel">
+    <span class="input-group-text">.00</span>
+  </div>
+  <div *ngIf="fCost.invalid && fCost.touched" class="text-danger mb-3">
+    Food Item cost cannot be less than 10
+  </div>
+
+  <!-- Current Image and Upload New Image -->
+  <div class="d-flex align-items-center mb-3">
+    <div class="me-3">
+      <label for="currentImage" class="form-label">Current Image</label>
+      <div>
+        <img [src]="'assets/images/'+getImageFileName(foodItem.imagePath)" alt="{{ foodItem.foodItemName }}" style="width: 100px; height: auto;">
+      </div>
+    </div>
+    <div>
+      <label for="newImage" class="form-label">Upload New Image</label>
+      <input type="file" (change)="onFileChange($event)" class="form-control" aria-describedby="foodItemImageLabel">
+    </div>
+  </div>
+
+  <div class="text-center mt-3">
+    <button type="submit" [disabled]="foodItemForm.form.invalid" class="btn btn-primary"><i class="material-icons">update</i> Update</button>
+  </div>
+</form>
