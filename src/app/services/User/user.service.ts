@@ -15,7 +15,9 @@ export class UserService {
   };
 
   register(user: any): Observable<any> {
+    console.log("aaaa");
     return this.http.post(`${this.baseUrl}/auth/registerNewUser`, user);
+    console.log("bbb");
   }
 
   getUserByUsername(username: string): Observable<User> {

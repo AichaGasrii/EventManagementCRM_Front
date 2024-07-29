@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/User/user.service';
 })
 export class ViewUserComponent implements OnInit {
 
-  users: User[] = [];
+  users: any;
   constructor(private memberService : UserService) { }
 
   ngOnInit(): void {

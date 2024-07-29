@@ -21,10 +21,11 @@
   }
 
  
-  /* CSS to adjust the size of reCAPTCHA */
+  /* CSS to adjust the size of reCAPTCHA 
 #captchaElem {
-    transform: scale(0.5); /* Adjust the scale factor as needed */
+    transform: scale(0.5);
   }
+  */
 
   .auth-description {
     font-size: 12px; /* Adjust the font size smaller */
