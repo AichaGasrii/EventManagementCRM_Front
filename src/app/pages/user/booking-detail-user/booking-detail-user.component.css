@@ -3,6 +3,18 @@ body {
   background-color: #f8f9fa;
   margin: 0;
 }
+
+.progress {
+  height: 20px;
+  background-color: #e0e0e0; /* Couleur de fond */
+}
+
+.progress-bar {
+  transition: width 0.5s; /* Transition douce pour le changement de largeur */
+  background-image: linear-gradient(to right, red, green); /* Dégradé du rouge au vert */
+}
+
+
 .bread {
   margin-bottom: 20px;
 }

@@ -242,38 +242,47 @@ export class BookEventComponent implements OnInit {
   // Book Event
   public bookEvent() {
     Swal.fire({
-      icon: 'info',
-      title: 'Are you sure  ?',
-      confirmButtonText: 'Yes, Book',
-      showCancelButton: true
+        icon: 'info',
+        title: 'Are you sure?',
+        confirmButtonText: 'Yes, Book',
+        showCancelButton: true
     }).then(
-      (result) => {
-        if (result.isConfirmed) {
-          console.log('Booking event:', this.booking);
+        (result) => {
+            if (result.isConfirmed) {
+                console.log('Booking event:', this.booking);
 
-          this.booking.selectedFoodItems = this.booking.selectedFoodItems.toString();
-          this.booking.selectedEquipments = this.booking.selectedEquipments.toString();
+                this.booking.selectedFoodItems = this.booking.selectedFoodItems.toString();
+                this.booking.selectedEquipments = this.booking.selectedEquipments.toString();
 
-          this.venueUserService.bookEvent(this.booking).subscribe(
-            (data) => {
-
-              this.check = data;
-              if (this.check =data) {
-                this.router.navigate(['user/payMessage']);
-              } else if (this.check == 0) {
-                Swal.fire("Ohh No", "It seems that this date is already taken for this venue" +
-                  " Please try to choose another date or Venue ", "error")
-              }
-              console.log("check is " + this.check);
-
-            }, (error) => {
-              Swal.fire("Sorry", "There is an error while Booking this Event", "error");
-              console.error('Error booking event:', error);
+                this.venueUserService.bookEvent(this.booking).subscribe(
+                    (data) => {
+                        this.check = data;
+                        if (this.check) {
+                            // Show payment success message
+                            Swal.fire({
+                                title: 'Your Booking is Successful',
+                                text: 'Note that, Booking will not be visible to Organizer till payment is Done. Proceed For the Payment in your booking history detail.',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then((result) => {
+                                // Redirect to payment after the Swal is acknowledged
+                                if (result.isConfirmed) {
+                                    this.router.navigate(['/user/bookingHistory']); // Navigate to your payment page
+                                }
+                            });
+                        } else if (this.check == 0) {
+                            Swal.fire("Ohh No", "It seems that this date is already taken for this venue. Please try to choose another date or Venue.", "error");
+                        }
+                        console.log("check is " + this.check);
+                    }, (error) => {
+                        Swal.fire("Sorry", "There is an error while Booking this Event", "error");
+                        console.error('Error booking event:', error);
+                    }
+                );
             }
-          );
-        }
-      });
-  }
+        });
+}
+
 
   // Extracts the filename from a given file path.
   getImageFileName(path: string): string {

@@ -18,6 +18,22 @@
         <div class="card-body">
           <div class="row mb-3">
             <div class="col">
+              <h5 class="font-weight-bold mb-0">Event Planning Progress</h5>
+              <div class="progress">
+                <div 
+                  class="progress-bar" 
+                  role="progressbar" 
+                  [style.width]="taskProgressPercentage + '%'" 
+                  [attr.aria-valuenow]="taskProgressPercentage" 
+                  aria-valuemin="0" 
+                  aria-valuemax="100">
+                  {{taskProgressPercentage | number: '1.0-0'}}%
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
               <p class="font-weight-bold mb-0">Booking ID</p>
               <p>{{booking.bookingId}}</p>
             </div>
@@ -98,3 +114,4 @@
     </div>
   </div>
 </div>
+

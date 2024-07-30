@@ -1,9 +1,24 @@
-<div class="app-content">
-  <div class="content-wrapper">
+
+
+<div class="bread">
+  <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/organizer" routerLinkActive="router-link-active">Home</a></li>
+          <li class="breadcrumb-item"><a routerLink="/organizer/viewBookings" routerLinkActive="router-link-active">Bookings</a></li>
+          <li class="breadcrumb-item"><a routerLink="/organizer/bookDetailsF/" routerLinkActive="router-link-active">Booking Details</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Event Tasks</li>
+      </ol>
+  </nav>
+</div>
+
+
       <div class="container-fluid">
+        
+            
           <div class="row">
               <div class="col">
                   <div class="card todo-container">
+                    
                       <div class="row">
                           <div class="col-xl-4 col-xxl-3">
                               <div class="todo-menu">
@@ -30,10 +45,11 @@
                                           </a>
                                       </li>
                                   </ul>
-                                  <a  class="btn btn-primary d-block m-b-lg" (click)="showNewTaskForm = true">Create new</a>
+                                  <!-- <a  class="btn btn-primary d-block m-b-lg" (click)="showNewTaskForm = true">Create new</a> -->
                                   
                                   <h5 class="todo-menu-title">Search</h5>
-                                  <!-- <input type="text" class="form-control form-control-solid m-b-lg" placeholder="Type here.." [(ngModel)]="searchTerm"> -->
+                                  
+                                   <input type="text" class="form-control form-control-solid m-b-lg" placeholder="Type here.." >
 
                               </div>
                           </div>
@@ -70,5 +86,4 @@
               </div>
           </div>
       </div>
-  </div>
-</div>
+

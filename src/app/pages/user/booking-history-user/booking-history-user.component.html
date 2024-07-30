@@ -60,7 +60,7 @@
                 Details
               </button>
               <button
-                *ngIf="todayDate < booking.date"
+                *ngIf="todayDate < booking.date && booking.paymentStatus === 'Pending'"
                 type="button"
                 class="btn btn-outline-danger custom-btn"
                 (click)="cancelBooking(booking.bookingId)"
@@ -77,6 +77,7 @@
               </button>
             </div>
           </td>
+          
         </tr>
       </tbody>
     </table>
